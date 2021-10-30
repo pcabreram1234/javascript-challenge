@@ -1,13 +1,15 @@
 ## DESCRIPTION
 
-Nombre:
-Usuario Platzi:
+Nombre:Phillip Leonardo Cabrera Medrano
+Usuario Platzi:pcabreram1234
 
 ## Ciudad
-- [ ] Ciudad de México
-- [ ] Bogotá
+
+- [ ] Mao
+- [ ] República Dominicana
 
 # Retos:
-  - [ ] Primer problema
-  - [ ] Segundo problema
-  - [ ] Tercer problema
+
+- [*] Primer problema
+- [*] Segundo problema
+- [*] Tercer problema

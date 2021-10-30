@@ -1,4 +1,4 @@
-/* var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; */
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 var API = "https://rickandmortyapi.com/api/character/";
 var xhttp = new XMLHttpRequest();
@@ -7,6 +7,8 @@ let character = {
   count: 0,
   name: "",
   dimension: "",
+  id: "",
+  url: "",
 };
 
 const fetchData = (url_api) => {
@@ -27,17 +29,22 @@ const fetchData = (url_api) => {
 
 fetchData(API)
   .then((response) => {
-    Object.defineProperty(character, count, {
-      value: JSON.parse(response.info.count),
-    });
-
     return JSON.parse(response);
   })
   .then((response1) => {
-    fetchData(`${API}${response1.results[0].id}`).then((response2) => {
-      let provCharacter = JSON.parse(response1);
-      console.log(character);
+    character.count = response1.info.count;
+    character.name = response1.results[0].name;
+    character.id = response1.results[0].id;
+    character.url = response1.results[0].origin.url;
+    fetchData(`${character.url}`).then((response3) => {
+      character.dimension = JSON.parse(response3).dimension;
     });
+    console.log(`                 Personajes: ${character.count}
+                 Primer Personaje: ${character.name}
+                 Dimensión: ${character.dimension}`);
+  })
+  .catch((error) => {
+    console.log(error);
   });
 
 /* fetchData(API, function (error1, data1) {
